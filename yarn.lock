@@ -141,6 +141,12 @@
   dependencies:
     tslib "^1.9.0"
 
+"@angular/elements@^6.0.9":
+  version "6.0.9"
+  resolved "https://registry.yarnpkg.com/@angular/elements/-/elements-6.0.9.tgz#6c238632631fa545f4893db8b48a4e89b2a277b2"
+  dependencies:
+    tslib "^1.9.0"
+
 "@angular/forms@^6.0.3":
   version "6.0.9"
   resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-6.0.9.tgz#4252626875319f09e03d6b5eb61ea8d274061b8f"
@@ -1755,6 +1761,12 @@ dns-txt@^2.0.2:
   resolved "https://registry.yarnpkg.com/dns-txt/-/dns-txt-2.0.2.tgz#b91d806f5d27188e4ab3e7d107d881a1cc4642b6"
   dependencies:
     buffer-indexof "^1.0.0"
+
+document-register-element@^1.7.2:
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/document-register-element/-/document-register-element-1.11.0.tgz#18ad8a0297097a32f8811b5e63736eb71928f446"
+  dependencies:
+    lightercollective "^0.1.0"
 
 dom-converter@~0.1:
   version "0.1.4"
@@ -3552,6 +3564,10 @@ lie@~3.1.0:
   resolved "https://registry.yarnpkg.com/lie/-/lie-3.1.1.tgz#9a436b2cc7746ca59de7a41fa469b3efb76bd87e"
   dependencies:
     immediate "~3.0.5"
+
+lightercollective@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/lightercollective/-/lightercollective-0.1.0.tgz#70df102c530dcb8d0ccabfe6175a8d00d5f61300"
 
 load-json-file@^1.0.0:
   version "1.1.0"
