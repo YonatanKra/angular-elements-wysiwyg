@@ -6,6 +6,7 @@ import { CanvasComponent } from './canvas/canvas.component';
   imports: [
     CommonModule
   ],
-  declarations: [CanvasComponent]
+  declarations: [CanvasComponent],
+  exports: [CanvasComponent]
 })
 export class CanvasModule { }

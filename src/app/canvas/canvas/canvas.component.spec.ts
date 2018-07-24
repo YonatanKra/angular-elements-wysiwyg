@@ -23,8 +23,6 @@ describe('CanvasComponent', () => {
     it(`should emit an event 'canvasClicked' on click`, () => {
       spyOn(component.clickEvent, 'emit');
 
-      // trigger the click
-
       fixture.debugElement.nativeElement.dispatchEvent(new Event('click'));
 
       fixture.detectChanges();
