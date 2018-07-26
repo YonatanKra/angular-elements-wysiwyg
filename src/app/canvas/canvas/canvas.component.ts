@@ -1,32 +1,18 @@
-import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
 
 @Component({
   selector: 'app-canvas',
-  templateUrl: './canvas.component.html',
+  template: `<app-editor-element-wrapper *ngFor="let item of items"></app-editor-element-wrapper>`,
   styleUrls: ['./canvas.component.css']
 })
-export class CanvasComponent implements OnInit {
+export class CanvasComponent {
+  @Input() items = [];
   @Output()
   clickEvent = new EventEmitter();
 
   @HostListener('click') onClick() {
     this.clickEvent.emit('canvasClicked');
   }
-  constructor(private elRef: ElementRef) { }
+  constructor() { }
 
-  ngOnInit() {
-  }
-
-  addElementToDom(elementSpecs) {
-    const elementType = elementSpecs.type;
-    const elementPosition = elementSpecs.position;
-    const elementData = elementSpecs.data;
-
-    const elementRef = document.createElement(elementType);
-    elementRef.setAttribute('element-data', elementData);
-    elementRef.setAttribute('style',
-      `position: absolute; top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
-
-    this.elRef.nativeElement.appendChild(elementRef);
-  }
 }

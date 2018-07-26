@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CanvasComponent } from './canvas.component';
+import {NO_ERRORS_SCHEMA} from "@angular/core";
 
 describe('CanvasComponent', () => {
   let component: CanvasComponent;
@@ -8,7 +9,8 @@ describe('CanvasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CanvasComponent ]
+      declarations: [ CanvasComponent ],
+      schemas: [ NO_ERRORS_SCHEMA ]
     })
     .compileComponents();
   }));
@@ -31,21 +33,12 @@ describe('CanvasComponent', () => {
     });
   });
 
-  describe('addElementToDom', () => {
-    it('should add an element to the DOM in the right position', () => {
-      const elementSpecs = {
-        type: 'custom-div',
-        data: {customData: 42},
-        position: {
-          top: 50,
-          left: 50
-        }
-      };
-
+  describe('show elements', function() {
+    it('should show a list of editorElementWrapper', () => {
+      component.items = [{}, {}, {}];
+      fixture.detectChanges();
       const nativeElement = fixture.debugElement.nativeElement;
-      component.addElementToDom(elementSpecs);
-
-      expect(nativeElement.querySelector(elementSpecs.type)).toBeTruthy();
+      expect(nativeElement.querySelectorAll('app-editor-element-wrapper').length).toEqual(component.items.length);
     });
   });
 });
