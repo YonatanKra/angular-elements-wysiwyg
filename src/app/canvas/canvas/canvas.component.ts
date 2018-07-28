@@ -2,7 +2,8 @@ import {Component, EventEmitter, HostListener, Input, Output} from '@angular/cor
 
 @Component({
   selector: 'app-canvas',
-  template: `<app-editor-element-wrapper *ngFor="let item of items"></app-editor-element-wrapper>`,
+  template: `
+    <app-editor-element-wrapper [elementData]="item" *ngFor="let item of items"></app-editor-element-wrapper>`,
   styleUrls: ['./canvas.component.css']
 })
 export class CanvasComponent {
