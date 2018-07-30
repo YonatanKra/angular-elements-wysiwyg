@@ -125,8 +125,9 @@ describe('EditElementComponent', () => {
     });
 
     it('should send elementUpdate event using an event emitter', () => {
+      spyOn(component.saveEvent, 'emit');
       component.save();
-      expect(component.saveEvent.emit).toHaveBeenCalledWith('elementDataUpdate');
+      expect(component.saveEvent.emit).toHaveBeenCalledWith(component.elementSpecs);
     });
   });
 });

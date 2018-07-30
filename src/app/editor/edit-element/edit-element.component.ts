@@ -7,7 +7,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angul
       <select #typeSelector (change)="typeChange(typeSelector.value)">
         <option *ngFor="let item of items" [value]="item.type">{{item.displayName}}</option>
       </select>
-      <app-editor-element-wrapper [elementData]="_elementSpecs"></app-editor-element-wrapper>
+      <app-editor-element-wrapper [elementData]="elementSpecs"></app-editor-element-wrapper>
       \`,
     </form>
   `,
@@ -15,7 +15,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angul
 })
 export class EditElementComponent implements OnInit {
 
-  public _elementSpecs = {};
+  private _elementSpecs;
   @Output() saveEvent = new EventEmitter();
 
   @Input() items;
@@ -25,6 +25,10 @@ export class EditElementComponent implements OnInit {
     this._elementSpecs = {
       type: data.type + '-editor'
     };
+  }
+
+  get elementSpecs() {
+    return this._elementSpecs;
   }
 
   constructor(private elRef: ElementRef) { }
@@ -46,6 +50,6 @@ export class EditElementComponent implements OnInit {
   }
 
   public save() {
-
+    this.saveEvent.emit(this.elementSpecs);
   }
 }
