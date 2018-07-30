@@ -4,8 +4,8 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angul
   selector: 'app-edit-element',
   template: `
     <form>
-      <select>
-        <option *ngFor="let item of items" value="item.value">{{item.displayName}}</option>
+      <select #typeSelector (change)="typeChange(typeSelector.value)">
+        <option *ngFor="let item of items" [value]="item.type">{{item.displayName}}</option>
       </select>
       <app-editor-element-wrapper [elementData]="_elementSpecs"></app-editor-element-wrapper>
       \`,
@@ -26,6 +26,7 @@ export class EditElementComponent implements OnInit {
       type: data.type + '-editor'
     };
   }
+
   constructor(private elRef: ElementRef) { }
 
   ngOnInit() {
@@ -33,6 +34,15 @@ export class EditElementComponent implements OnInit {
 
   private toggleDisplay(val) {
     this.elRef.nativeElement.style.display = val ? 'block' : 'none';
+  }
+
+  public typeChange(customElement) {
+    if (customElement === '') {
+      return;
+    }
+    this.elementSpecs = {
+      type: customElement
+    };
   }
 
   public save() {
