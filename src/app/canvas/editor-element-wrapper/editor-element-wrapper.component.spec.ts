@@ -19,23 +19,6 @@ describe('EditorElementWrapperComponent', () => {
     fixture.detectChanges();
   });
 
-  // unit test an important function
-  describe('addElementToDOM', () => {
-    it('should add element to the DOM with elementData value in the right position', () => {
-      const elementSpecs = {
-        type: 'custom-div',
-        data: {customData: 42},
-        position: {
-          top: 50,
-          left: 50
-        }
-      };
-
-      component.addElementToDom(elementSpecs);
-      verifyElementPlacement(elementSpecs);
-    });
-  });
-
   // test our usecase
   describe('DOM append and updates', () => {
     it('should update the element when data changes', () => {

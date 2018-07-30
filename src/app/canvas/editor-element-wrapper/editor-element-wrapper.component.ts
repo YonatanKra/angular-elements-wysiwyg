@@ -27,7 +27,7 @@ export class EditorElementWrapperComponent {
 
   private addElementToDom(elementSpecs) {
     const elementType = elementSpecs.type;
-    const elementPosition = elementSpecs.position;
+    const elementPosition = elementSpecs.position ? elementSpecs.position : {top: 0, left: 0};
     const elementData = elementSpecs.data;
 
     this._element = document.createElement(elementType);

@@ -8,6 +8,6 @@ import { EditorElementWrapperComponent } from './editor-element-wrapper/editor-e
     CommonModule
   ],
   declarations: [CanvasComponent, EditorElementWrapperComponent],
-  exports: [CanvasComponent]
+  exports: [CanvasComponent, EditorElementWrapperComponent]
 })
 export class CanvasModule { }
