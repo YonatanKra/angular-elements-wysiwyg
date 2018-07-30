@@ -93,6 +93,37 @@ describe('EditElementComponent', () => {
   });
 
   describe('form interaction', () => {
+    it('should update the element when changing the type selector', () => {
+      const element = fixture.nativeElement;
+      const elementSpecs = {
+  type: 'custom-div',
+  data: {customData: 42},
+  position: {
+    top: 50,
+    left: 50
+  }
+};
+      component.elementSpecs = elementSpecs;
+      component.items = [
+        {
+          type: 'custom-div'
+        },
+        {
+          type: 'my-custom-div'
+        }
+      ];
+
+      fixture.detectChanges();
+
+      const selectElement = element.querySelector('select');
+      selectElement.value = 'my-custom-div';
+      selectElement.dispatchEvent(new Event('change'));
+      fixture.detectChanges();
+
+      expect(element.querySelectorAll('custom-div-editor').length).toEqual(0);
+      expect(element.querySelectorAll('my-custom-div-editor').length).toEqual(1);
+    });
+
     it('should send elementUpdate event using an event emitter', () => {
       component.save();
       expect(component.saveEvent.emit).toHaveBeenCalledWith('elementDataUpdate');
