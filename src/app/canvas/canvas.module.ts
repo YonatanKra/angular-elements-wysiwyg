@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CanvasComponent } from './canvas/canvas.component';
-import { EditorElementWrapperComponent } from './editor-element-wrapper/editor-element-wrapper.component';
+import {ElementsModule} from '../elements/elements.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    ElementsModule
   ],
-  declarations: [CanvasComponent, EditorElementWrapperComponent],
-  exports: [CanvasComponent, EditorElementWrapperComponent]
+  declarations: [CanvasComponent],
+  exports: [CanvasComponent]
 })
 export class CanvasModule { }

@@ -2,14 +2,15 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {CanvasComponent} from './canvas.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
+import {ElementWrapperComponent} from "../../elements/element-wrapper/element-wrapper.component";
 class Position {
   public top = 0;
   public left = 0;
 }
 class ElementSpecs {
-  public type: string = '';
+  public type = '';
   public position: Position = new Position();
-  public data: any = {};
+  public data: any;
   constructor(data?: ElementSpecs) {
     if (!data) {
       return;
@@ -30,7 +31,7 @@ describe('CanvasComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [CanvasComponent],
+      declarations: [CanvasComponent, ElementWrapperComponent],
       schemas: [NO_ERRORS_SCHEMA]
     })
       .compileComponents();
@@ -56,10 +57,18 @@ describe('CanvasComponent', () => {
 
   describe('show elements', function () {
     it('should show a list of editorElementWrapper', () => {
-      component.items = [new ElementSpecs(), new ElementSpecs(), new ElementSpecs()];
+      const elementSpec = new ElementSpecs({
+        type: 'custom-element',
+        position: {
+          top: 50,
+          left: 50
+        },
+        data: {}
+      });
+      component.items = [elementSpec, elementSpec, elementSpec];
       fixture.detectChanges();
       const nativeElement = fixture.debugElement.nativeElement;
-      expect(nativeElement.querySelectorAll('app-editor-element-wrapper').length).toEqual(component.items.length);
+      expect(nativeElement.querySelectorAll(elementSpec.type).length).toEqual(component.items.length);
     });
   });
 });
