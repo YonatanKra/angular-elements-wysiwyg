@@ -1,11 +1,11 @@
 import {Component, ElementRef, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-editor-element-wrapper',
+  selector: 'app-element-wrapper',
   template: ``,
-  styleUrls: ['./editor-element-wrapper.component.css']
+  styleUrls: ['./element-wrapper.component.css']
 })
-export class EditorElementWrapperComponent {
+export class ElementWrapperComponent {
 
   private _element: HTMLElement;
 

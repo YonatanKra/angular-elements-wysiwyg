@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditorElementWrapperComponent } from './editor-element-wrapper.component';
+import { ElementWrapperComponent } from './element-wrapper.component';
 
 describe('EditorElementWrapperComponent', () => {
-  let component: EditorElementWrapperComponent;
-  let fixture: ComponentFixture<EditorElementWrapperComponent>;
+  let component: ElementWrapperComponent;
+  let fixture: ComponentFixture<ElementWrapperComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditorElementWrapperComponent ]
+      declarations: [ ElementWrapperComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditorElementWrapperComponent);
+    fixture = TestBed.createComponent(ElementWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
