@@ -7,7 +7,7 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angul
       <select #typeSelector (change)="typeChange(typeSelector.value)">
         <option *ngFor="let item of items" [value]="item.type">{{item.displayName}}</option>
       </select>
-      <app-editor-element-wrapper [elementData]="elementSpecs"></app-editor-element-wrapper>
+      <app-element-wrapper [elementData]="elementSpecs"></app-element-wrapper>
       \`,
     </form>
   `,
