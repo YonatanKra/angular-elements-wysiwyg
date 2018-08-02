@@ -39,9 +39,9 @@ export class BoxWithTextComponent {
   private updateBox(elementData) {
     this.boxStyles.color = elementData.textColor;
     this.boxStyles.border = `1px solid ${elementData.borderColor}`;
-    this.boxStyles['border-radius'] = `${elementData.borderRadius}`;
+    this.boxStyles['border-radius'] = `${elementData.borderRadius}px`;
     this.boxStyles.backgroundColor = `${elementData.backgroundColor}`;
-    this.boxStyles.width = `${elementData.width}`;
-    this.boxStyles.height = `${elementData.height}`;
+    this.boxStyles.width = `${elementData.width}px`;
+    this.boxStyles.height = `${elementData.height}px`;
   }
 }

@@ -33,15 +33,14 @@ describe('BoxWithTextComponent', () => {
     fixture.detectChanges();
 
     const boxElement = fixture.debugElement.nativeElement.querySelector('.box-with-text');
-    const boxElementStyles = boxElement.style;
+    const boxElementStyles = window.getComputedStyle(boxElement);
     expect(boxElement.innerText).toEqual(component.elementData.text);
 
-    expect(boxElementStyles.color).toEqual(component.elementData.textColor);
-    expect(boxElementStyles.backgroundColor).toEqual(component.elementData.backgroundColor);
-    expect(boxElementStyles.borderRadius).toEqual(component.elementData.borderRadius + 'px');
-    expect(boxElementStyles.border).toEqual(`1px solid ${component.elementData.borderColor}`);
-    expect(boxElementStyles.width).toEqual(component.elementData.width + 'px');
-    expect(boxElementStyles.height).toEqual(component.elementData.height + 'px');
-
+    expect(boxElement.style.color).toEqual(component.elementData.textColor);
+    expect(boxElement.style.backgroundColor).toEqual(component.elementData.backgroundColor);
+    expect(boxElementStyles['border-radius']).toEqual(component.elementData.borderRadius + 'px');
+    expect(boxElement.style.border).toEqual(`1px solid ${component.elementData.borderColor}`);
+    expect(boxElement.style.width).toEqual(component.elementData.width + 'px');
+    expect(boxElement.style.height).toEqual(component.elementData.height + 'px');
   });
 });
