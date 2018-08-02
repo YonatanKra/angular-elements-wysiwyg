@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, Input, Output, ViewEncapsulation} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-box-with-text',
@@ -11,8 +11,6 @@ import {Component, ElementRef, EventEmitter, Input, Output, ViewEncapsulation} f
   encapsulation: ViewEncapsulation.ShadowDom
 })
 export class BoxWithTextComponent {
-
-  private wrapper;
 
   public _elementData;
   public boxStyles = {
@@ -34,7 +32,7 @@ export class BoxWithTextComponent {
     return this._elementData ? this._elementData : {};
   }
 
-  constructor(private elRef: ElementRef) {
+  constructor() {
   }
 
   private updateBox(elementData) {
