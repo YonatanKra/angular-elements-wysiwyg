@@ -32,7 +32,8 @@ describe('BoxWithTextComponent', () => {
 
     fixture.detectChanges();
 
-    const boxElement = fixture.debugElement.nativeElement.querySelector('.box-with-text');
+    const shadowRoot: DocumentFragment = fixture.debugElement.nativeElement.shadowRoot;
+    const boxElement = shadowRoot.querySelector('.box-with-text');
     const boxElementStyles = window.getComputedStyle(boxElement);
     expect(boxElement.innerText).toEqual(component.elementData.text);
 

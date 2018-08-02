@@ -7,7 +7,8 @@ import {Component, ElementRef, EventEmitter, Input, Output, ViewEncapsulation} f
       {{elementData.text}}
     </div>
   `,
-  styleUrls: ['./box-with-text.component.css']
+  styleUrls: ['./box-with-text.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class BoxWithTextComponent {
 
