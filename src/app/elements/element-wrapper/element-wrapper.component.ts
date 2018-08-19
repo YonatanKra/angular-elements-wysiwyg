@@ -31,7 +31,7 @@ export class ElementWrapperComponent {
     const elementData = elementSpecs.data;
 
     this._element = document.createElement(elementType);
-    this._element.setAttribute('element-data', elementData);
+    this._element['elementData'] = elementData;
     this._element.setAttribute('style',
       `position: absolute; top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
 
