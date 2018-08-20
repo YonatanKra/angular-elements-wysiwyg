@@ -1,14 +1,18 @@
-import {Injector, NgModule} from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {ElementWrapperComponent} from './element-wrapper/element-wrapper.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { createCustomElement } from '@angular/elements';
+
+import { ElementWrapperComponent } from './element-wrapper/element-wrapper.component';
+import { ElementEditFormComponent } from './element-edit-form/element-edit-form.component';
+
 import { BoxWithTextComponent } from './box-with-text/box-with-text.component';
-import {createCustomElement} from "@angular/elements";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, ReactiveFormsModule
   ],
-  declarations: [ElementWrapperComponent, BoxWithTextComponent],
+  declarations: [ElementWrapperComponent, BoxWithTextComponent, ElementEditFormComponent],
   exports: [ElementWrapperComponent, BoxWithTextComponent],
   entryComponents: [BoxWithTextComponent]
 })
