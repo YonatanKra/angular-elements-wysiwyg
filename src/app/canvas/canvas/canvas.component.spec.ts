@@ -3,6 +3,8 @@ import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 import {CanvasComponent} from './canvas.component';
 import {NO_ERRORS_SCHEMA} from '@angular/core';
 import {ElementWrapperComponent} from '../../elements/element-wrapper/element-wrapper.component';
+import {ElementSpecs} from '../../elements/models/element-specs';
+import {Position} from '../../elements/models/position';
 
 describe('CanvasComponent', () => {
   let component: CanvasComponent;
@@ -36,14 +38,11 @@ describe('CanvasComponent', () => {
 
   describe('show elements', function () {
     it('should show a list of editorElementWrapper', () => {
-      const elementSpec = {
+      const elementSpec = new ElementSpecs({
         type: 'custom-element',
-        position: {
-          top: 50,
-          left: 50
-        },
+        position: new Position(50, 50),
         data: {}
-      };
+      });
       component.items = [elementSpec, elementSpec, elementSpec];
       fixture.detectChanges();
       const nativeElement = fixture.debugElement.nativeElement;

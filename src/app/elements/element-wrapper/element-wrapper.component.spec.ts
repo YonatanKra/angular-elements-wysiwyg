@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ElementWrapperComponent } from './element-wrapper.component';
+import { Position } from '../models/position';
 
 describe('EditorElementWrapperComponent', () => {
   let component: ElementWrapperComponent;
@@ -25,10 +26,7 @@ describe('EditorElementWrapperComponent', () => {
       const elementData = component.elementData = {
         type: 'custom-div',
         data: {customData: 42},
-        position: {
-          top: 50,
-          left: 50
-        }
+        position: new Position(50, 50)
       };
 
       fixture.detectChanges();
