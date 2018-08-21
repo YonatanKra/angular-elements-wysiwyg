@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ElementEditFormComponent } from './element-edit-form.component';
 import {ElementSpecs} from '../models/element-specs';
 import {Position} from '../models/position';
-import {ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from '@angular/forms';
 
 describe('ElementEditFormComponent', () => {
   let component: ElementEditFormComponent;
@@ -26,17 +26,19 @@ describe('ElementEditFormComponent', () => {
   });
 
   describe('input fields', () => {
-    it('should set inputs according to JSON', () => {
+    it('should set inputs according to JSON and model', () => {
       const dataFields = [
         {
           type: 'text',
           displayName: 'name 1',
-          property: 'name1'
+          property: 'name1',
+          value: Math.random().toString()
         },
         {
           type: 'number',
           displayName: 'number 1',
-          property: 'num1'
+          property: 'num1',
+          value: Math.random()
         }
       ];
 
@@ -47,7 +49,9 @@ describe('ElementEditFormComponent', () => {
       const inputElements = element.querySelectorAll('input');
       expect(inputElements.length).toEqual(2);
       dataFields.forEach((dataField, index) => {
-        expect(inputElements[index].getAttribute('type')).toEqual(dataField.type);
+        const inputElement = inputElements[index];
+        expect(inputElement.getAttribute('type')).toEqual(dataField.type);
+        expect(inputElement.value).toEqual(dataField.value.toString());
       });
     });
   });
@@ -61,32 +65,40 @@ describe('ElementEditFormComponent', () => {
         {
           type: 'text',
           displayName: 'name 1',
-          property: 'name1'
+          property: 'name1',
+          value: 'name2'
         },
         {
           type: 'number',
           displayName: 'number 1',
-          property: 'num1'
+          property: 'num1',
+          value: 2
         }
       ];
-
-      component.elementData = {
-        name1: 'name2',
-        num1: 2
-      };
 
       component.fields = dataFields;
 
       fixture.detectChanges();
 
-      component.form.controls.name1.setValue('name1');
-      component.form.controls.num1.setValue(0);
+      const inputElements = element.querySelectorAll('input');
+      inputElements[0].value = 'name1';
+      inputElements[1].value = 0;
+
+      const event = new Event('input', {
+        'bubbles': true,
+        'cancelable': true
+      });
+
+      inputElements[0].dispatchEvent(event);
+      inputElements[1].dispatchEvent(event);
+
+      fixture.detectChanges();
 
       const button = fixture.debugElement.nativeElement.querySelector('button.submit');
       button.click();
 
       expect(component.submit.emit).toHaveBeenCalledWith({
-        name1: 'name1', num1: 0
+        name1: 'name1', num1: '0'
       });
     });
   });

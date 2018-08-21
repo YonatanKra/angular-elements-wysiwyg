@@ -31,8 +31,6 @@ export class ElementEditFormComponent implements OnInit {
     return this._fields;
   }
 
-  @Input() elementData = {};
-
   @Output() submit = new EventEmitter();
 
   form: FormGroup;
@@ -43,17 +41,23 @@ export class ElementEditFormComponent implements OnInit {
   private setGroup() {
     const group: any = {};
     this.fields.forEach(field => {
-      group[field.property] = new FormControl(this.elementData[field.property] || '');
+      group[field.property] = new FormControl(field.value || '');
+      if (field.type === 'number') {
+        group[field.property].viewToModelUpdate = function(newValue: any)  {
+          this.viewModel = parseInt(newValue, 10);
+          this.update.emit(this.viewModel);
+        };
+      }
     });
-    this.form = this.formBuilder.group(group);
-  }
 
-  onSubmit() {
-    this.submit.emit(this.form.value);
+    this.form = this.formBuilder.group(group);
   }
 
   ngOnInit() {
     this.setGroup();
   }
 
+  onSubmit() {
+    this.submit.emit(this.form.value);
+  }
 }

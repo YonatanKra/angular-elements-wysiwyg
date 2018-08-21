@@ -14,13 +14,16 @@ import { BoxWithTextComponent } from './box-with-text/box-with-text.component';
   ],
   declarations: [ElementWrapperComponent, BoxWithTextComponent, ElementEditFormComponent],
   exports: [ElementWrapperComponent, BoxWithTextComponent],
-  entryComponents: [BoxWithTextComponent]
+  entryComponents: [ElementEditFormComponent, BoxWithTextComponent]
 })
 export class ElementsModule {
 
   constructor(private injector: Injector) {
     const boxWithText = createCustomElement(BoxWithTextComponent, {injector});
     customElements.define('box-with-text', boxWithText);
+
+    const elementEditorForm = createCustomElement(ElementEditFormComponent, {injector});
+    customElements.define('element-editor', elementEditorForm);
   }
   ngDoBootstrap() {}
 }
