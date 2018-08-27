@@ -5,23 +5,19 @@ import { createCustomElement } from '@angular/elements';
 
 import { ElementWrapperComponent } from './element-wrapper/element-wrapper.component';
 import { ElementEditFormComponent } from './element-edit-form/element-edit-form.component';
-
-import { BoxWithTextComponent } from './box-with-text/box-with-text.component';
+import {BoxWithTextModule} from './box-with-text/box-with-text.module';
 
 @NgModule({
   imports: [
-    CommonModule, ReactiveFormsModule
+    CommonModule, ReactiveFormsModule, BoxWithTextModule
   ],
-  declarations: [ElementWrapperComponent, BoxWithTextComponent, ElementEditFormComponent],
-  exports: [ElementWrapperComponent, BoxWithTextComponent],
-  entryComponents: [ElementEditFormComponent, BoxWithTextComponent]
+  declarations: [ElementWrapperComponent, ElementEditFormComponent],
+  exports: [ElementWrapperComponent],
+  entryComponents: [ElementEditFormComponent]
 })
 export class ElementsModule {
 
   constructor(private injector: Injector) {
-    const boxWithText = createCustomElement(BoxWithTextComponent, {injector});
-    customElements.define('box-with-text', boxWithText);
-
     const elementEditorForm = createCustomElement(ElementEditFormComponent, {injector});
     customElements.define('element-editor', elementEditorForm);
   }
