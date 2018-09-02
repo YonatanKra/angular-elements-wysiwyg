@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import {createCustomElement} from '@angular/elements';
 import {BoxWithTextComponent} from './box-with-text/box-with-text.component';
 import { BoxWithTextEditorComponent } from './box-with-text-editor/box-with-text-editor.component';
+import {SharedModule} from '../shared/shared.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule, SharedModule
   ],
   declarations: [BoxWithTextComponent, BoxWithTextEditorComponent],
-  entryComponents: [BoxWithTextComponent]
+  entryComponents: [BoxWithTextComponent, BoxWithTextEditorComponent]
 })
 export class BoxWithTextModule {
   constructor(private injector: Injector) {
