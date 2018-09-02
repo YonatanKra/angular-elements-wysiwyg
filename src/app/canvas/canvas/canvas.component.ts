@@ -1,4 +1,5 @@
 import {Component, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import {ElementSpecs} from '../../elements/models/element-specs';
 
 @Component({
   selector: 'app-canvas',
@@ -7,7 +8,7 @@ import {Component, EventEmitter, HostListener, Input, Output} from '@angular/cor
   styleUrls: ['./canvas.component.css']
 })
 export class CanvasComponent {
-  @Input() items = [];
+  @Input() items: Array<ElementSpecs> = [];
   @Output()
   clickEvent = new EventEmitter();
 
