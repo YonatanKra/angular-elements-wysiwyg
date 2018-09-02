@@ -3,7 +3,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { DataService } from './data.service';
 import {ElementSpecs} from '../elements/models/element-specs';
 
-fdescribe('DataService', () => {
+describe('DataService', () => {
   let service: DataService;
 
   beforeEach(() => {
