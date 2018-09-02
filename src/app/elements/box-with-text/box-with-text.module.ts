@@ -1,7 +1,7 @@
 import {Injector, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {createCustomElement} from "@angular/elements";
-import {BoxWithTextComponent} from "./box-with-text/box-with-text.component";
+import {createCustomElement} from '@angular/elements';
+import {BoxWithTextComponent} from './box-with-text/box-with-text.component';
 import { BoxWithTextEditorComponent } from './box-with-text-editor/box-with-text-editor.component';
 
 @NgModule({
