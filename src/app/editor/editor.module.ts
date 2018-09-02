@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { EditElementComponent } from './edit-element/edit-element.component';
 import {ElementsModule} from '../elements/elements.module';
@@ -8,6 +8,7 @@ import {ElementsModule} from '../elements/elements.module';
     CommonModule,
     ElementsModule
   ],
-  declarations: [EditElementComponent]
+  declarations: [EditElementComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class EditorModule { }
