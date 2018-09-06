@@ -7,7 +7,7 @@ import {Position} from './elements/models/position';
   selector: 'app-root',
   template: `
     <app-canvas [items]="elements" (clickEvent)="canvasClick($event)"></app-canvas>
-    <app-edit-element [elementSpecs]="elementSpecs" [items]="elementsTypes"></app-edit-element>
+    <app-edit-element (saveEvent)="saveEvent($event)" [elementSpecs]="elementSpecs" [items]="elementsTypes"></app-edit-element>
   `,
   styleUrls: ['./app.component.css']
 })
@@ -38,6 +38,9 @@ export class AppComponent {
     this.elementSpecs = new ElementSpecs();
 
     this.elementSpecs.position = this.getEventPosition(event);
+  }
 
+  saveEvent(data) {
+    this.elements.push(data);
   }
 }
