@@ -1,5 +1,5 @@
 import {Component, ElementRef, Input} from '@angular/core';
-import {ElementSpecs} from "../models/element-specs";
+import {ElementSpecs} from '../models/element-specs';
 
 @Component({
   selector: 'app-element-wrapper',
@@ -34,7 +34,7 @@ export class ElementWrapperComponent {
     this._element = document.createElement(elementType);
     this._element['elementData'] = elementData;
     this._element.setAttribute('style',
-      `position: absolute; top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
+      `top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
 
     this.elRef.nativeElement.appendChild(this._element);
   }

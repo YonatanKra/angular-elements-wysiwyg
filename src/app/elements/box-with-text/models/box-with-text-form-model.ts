@@ -1,4 +1,4 @@
-import {FormFieldsModel} from "../../models/form-fields";
+import {FormFieldsModel} from '../../models/form-fields';
 
 export const BoxWithTextFormModel: Array<FormFieldsModel> = [
   new FormFieldsModel('color', 'text', 'Text Color'),

@@ -1,4 +1,7 @@
 :host {
   display: none;
-  position: absolute;
+}
+
+select {
+  min-width: 100%;
 }

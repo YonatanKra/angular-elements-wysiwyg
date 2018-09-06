@@ -39,7 +39,6 @@ describe('EditorElementWrapperComponent', () => {
     const nativeElement = fixture.debugElement.nativeElement;
     const appendedElement = nativeElement.querySelector(elementSpecs.type);
     expect(appendedElement).toBeTruthy();
-    expect(appendedElement.style.position).toEqual('absolute');
     expect(appendedElement.style.top).toEqual(`${elementSpecs.position.top}px`);
     expect(appendedElement.style.left).toEqual(`${elementSpecs.position.left}px`);
   }
