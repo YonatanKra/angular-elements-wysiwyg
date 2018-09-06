@@ -1,4 +1,5 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ElementSpecs} from "../../elements/models/element-specs";
 
 @Component({
   selector: 'app-edit-element',
@@ -15,12 +16,13 @@ import {Component, ElementRef, EventEmitter, Input, OnInit, Output} from '@angul
 })
 export class EditElementComponent implements OnInit {
 
-  private _elementSpecs;
+  private _elementSpecs: ElementSpecs;
+  private _elementType: string;
   @Output() saveEvent = new EventEmitter();
 
   @Input() items;
   @Input()
-  set elementSpecs(data) {
+  set elementSpecs(data: ElementSpecs) {
     if (!data) {
       return;
     }
@@ -28,6 +30,12 @@ export class EditElementComponent implements OnInit {
     this._elementSpecs = Object.assign(data, {
       type: data.type ? data.type + '-editor' : undefined
     });
+    this._elementSpecs.events = {
+      submitEvent: (event) => {
+        this._elementSpecs.data = event.detail;
+        this.save();
+      }
+    };
   }
 
   get elementSpecs() {
@@ -44,6 +52,7 @@ export class EditElementComponent implements OnInit {
   }
 
   public typeChange(customElement) {
+    this._elementType = customElement;
     if (customElement === '') {
       return;
     }
@@ -51,6 +60,8 @@ export class EditElementComponent implements OnInit {
   }
 
   public save() {
-    this.saveEvent.emit(this.elementSpecs);
+    const elementSpec = new ElementSpecs(this.elementSpecs);
+    elementSpec.type = this._elementType;
+    this.saveEvent.emit(elementSpec);
   }
 }

@@ -1,7 +1,9 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { EditElementComponent } from './edit-element.component';
+import {EditElementComponent} from './edit-element.component';
 import {ElementWrapperComponent} from '../../elements/element-wrapper/element-wrapper.component';
+import {Position} from "../../elements/models/position";
+import {ElementSpecs} from "../../elements/models/element-specs";
 
 describe('EditElementComponent', () => {
   let component: EditElementComponent;
@@ -9,9 +11,9 @@ describe('EditElementComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditElementComponent, ElementWrapperComponent ]
+      declarations: [EditElementComponent, ElementWrapperComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
@@ -34,10 +36,7 @@ describe('EditElementComponent', () => {
       component.elementSpecs = {
         type: 'custom-div',
         data: {customData: 42},
-        position: {
-          top: 50,
-          left: 50
-        }
+        position: new Position(50, 50)
       };
 
       fixture.detectChanges();
@@ -51,11 +50,9 @@ describe('EditElementComponent', () => {
       component.elementSpecs = {
         type: 'custom-div',
         data: {customData: 42},
-        position: {
-          top: 50,
-          left: 50
-        }
+        position: new Position(50, 50)
       };
+
 
       fixture.detectChanges();
 
@@ -68,10 +65,7 @@ describe('EditElementComponent', () => {
       component.elementSpecs = {
         type: 'custom-div',
         data: {customData: 42},
-        position: {
-          top: 50,
-          left: 50
-        }
+        position: new Position(50, 50)
       };
 
       fixture.detectChanges();
@@ -79,10 +73,7 @@ describe('EditElementComponent', () => {
       component.elementSpecs = {
         type: 'custom-div2',
         data: {customData: 43},
-        position: {
-          top: 50,
-          left: 50
-        }
+        position: new Position(50, 50)
       };
 
       fixture.detectChanges();
@@ -96,13 +87,10 @@ describe('EditElementComponent', () => {
     it('should update the element when changing the type selector', () => {
       const element = fixture.nativeElement;
       const elementSpecs = {
-  type: 'custom-div',
-  data: {customData: 42},
-  position: {
-    top: 50,
-    left: 50
-  }
-};
+        type: 'custom-div',
+        data: {customData: 42},
+        position: new Position(50, 50)
+      };
       component.elementSpecs = elementSpecs;
       component.items = [
         {
@@ -125,6 +113,8 @@ describe('EditElementComponent', () => {
     });
 
     it('should send elementUpdate event using an event emitter', () => {
+      component.elementSpecs = new ElementSpecs();
+      component.elementSpecs.data = {};
       spyOn(component.saveEvent, 'emit');
       component.save();
       expect(component.saveEvent.emit).toHaveBeenCalledWith(component.elementSpecs);
