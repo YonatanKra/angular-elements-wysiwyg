@@ -33,6 +33,29 @@ describe('EditorElementWrapperComponent', () => {
 
       verifyElementPlacement(elementData);
     });
+
+    it('should add events if events exist', () => {
+      const elementData =  {
+        type: 'custom-div',
+        data: {customData: 42},
+        position: new Position(50, 50),
+        events: {
+          someEvent: () => {}
+        }
+      };
+
+      const event = new Event('someEvent');
+      spyOn(elementData.events, 'someEvent').and.callThrough();
+      component.elementData = elementData;
+      fixture.detectChanges();
+      const nativeElement = fixture.debugElement.nativeElement;
+      const appendedElement = nativeElement.querySelector(elementData.type);
+      appendedElement.dispatchEvent(event);
+
+      expect(elementData.events.someEvent).toHaveBeenCalled();
+
+      //TODO::trigger the someEvent event and see that the method has been ran
+    });
   });
 
   function verifyElementPlacement(elementSpecs) {

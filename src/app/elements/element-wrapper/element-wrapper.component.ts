@@ -36,6 +36,12 @@ export class ElementWrapperComponent {
     this._element.setAttribute('style',
       `top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
 
+    const events = elementSpecs.events;
+    if (events) {
+      Object.keys(events).forEach(key => {
+        this._element.addEventListener(key, events[key]);
+      });
+    }
     this.elRef.nativeElement.appendChild(this._element);
   }
 }
