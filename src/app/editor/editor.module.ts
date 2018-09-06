@@ -9,6 +9,7 @@ import {ElementsModule} from '../elements/elements.module';
     ElementsModule
   ],
   declarations: [EditElementComponent],
+  exports: [EditElementComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class EditorModule { }
