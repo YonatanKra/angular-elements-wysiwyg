@@ -1,5 +1,7 @@
 :host {
   display: none;
+  background: gray;
+  z-index: 99999;
 }
 
 select {
