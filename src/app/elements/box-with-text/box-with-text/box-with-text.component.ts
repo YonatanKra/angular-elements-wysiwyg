@@ -1,4 +1,5 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
+import { BoxWithTextFormModel } from '../models/box-with-text-form-model';
 
 @Component({
   selector: 'app-box-with-text',
@@ -36,9 +37,9 @@ export class BoxWithTextComponent {
   }
 
   private updateBox(elementData) {
-    this.boxStyles.color = elementData.textColor;
-    this.boxStyles.border = `1px solid ${elementData.borderColor}`;
-    this.boxStyles['border-radius'] = `${elementData.borderRadius}px`;
+    this.boxStyles.color = elementData.color;
+    this.boxStyles.border = `1px solid ${elementData.border}`;
+    this.boxStyles['border-radius'] = `${elementData['border-radius']}px`;
     this.boxStyles.backgroundColor = `${elementData.backgroundColor}`;
     this.boxStyles.width = `${elementData.width}px`;
     this.boxStyles.height = `${elementData.height}px`;
