@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ElementWrapperComponent } from './element-wrapper.component';
 import { Position } from '../models/position';
+import {ElementSpecs} from "../models/element-specs";
 
 describe('EditorElementWrapperComponent', () => {
   let component: ElementWrapperComponent;
@@ -23,11 +24,11 @@ describe('EditorElementWrapperComponent', () => {
   // test our usecase
   describe('DOM append and updates', () => {
     it('should update the element when data changes', () => {
-      const elementData = component.elementData = {
+      const elementData = component.elementData = new ElementSpecs({
         type: 'custom-div',
         data: {customData: 42},
         position: new Position(50, 50)
-      };
+      });
 
       fixture.detectChanges();
 
@@ -35,14 +36,14 @@ describe('EditorElementWrapperComponent', () => {
     });
 
     it('should add events if events exist', () => {
-      const elementData =  {
+      const elementData =  new ElementSpecs({
         type: 'custom-div',
         data: {customData: 42},
         position: new Position(50, 50),
         events: {
           someEvent: () => {}
         }
-      };
+      });
 
       const event = new Event('someEvent');
       spyOn(elementData.events, 'someEvent').and.callThrough();

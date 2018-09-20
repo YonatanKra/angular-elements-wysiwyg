@@ -27,9 +27,10 @@ export class EditElementComponent implements OnInit {
       return;
     }
     this.toggleDisplay(true);
-    this._elementSpecs = Object.assign(data, {
+    this._elementSpecs = Object.assign({}, data, {
       type: data.type ? data.type + '-editor' : undefined
     });
+
     this._elementSpecs.events = {
       submitEvent: (event) => {
         this._elementSpecs.data = event.detail;
@@ -60,8 +61,6 @@ export class EditElementComponent implements OnInit {
   }
 
   public save() {
-    const elementSpec = new ElementSpecs(this.elementSpecs);
-    elementSpec.type = this._elementType;
-    this.saveEvent.emit(elementSpec);
+    this.saveEvent.emit(Object.assign({}, this.elementSpecs, {type: this._elementType}));
   }
 }

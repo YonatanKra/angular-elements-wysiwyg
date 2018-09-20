@@ -1,12 +1,13 @@
 import {Position} from './position';
 
 export class ElementSpecs {
+  private _id?: string = (Math.random() * 100000 + new Date().getTime()).toString();
   public type = '';
   public position: Position = new Position();
   public data: any;
   public events?: any;
 
-  constructor(data?: ElementSpecs) {
+  constructor(data?: any) {
     if (!data) {
       return;
     }
@@ -18,5 +19,9 @@ export class ElementSpecs {
     }
     this.data = data.data;
     this.events = data.events;
+  }
+
+  get id() {
+    return this._id;
   }
 }
