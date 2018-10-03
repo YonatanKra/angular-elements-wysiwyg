@@ -35,6 +35,7 @@ export class ElementWrapperComponent {
     this._element['elementData'] = elementData;
     this._element.setAttribute('style',
       `top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
+    this._element.setAttribute('id', elementSpecs.id);
 
     const events = elementSpecs.events;
     if (events) {

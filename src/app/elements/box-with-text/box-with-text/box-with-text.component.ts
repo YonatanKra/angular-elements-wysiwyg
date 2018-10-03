@@ -1,5 +1,4 @@
 import {Component, Input, ViewEncapsulation} from '@angular/core';
-import { BoxWithTextFormModel } from '../models/box-with-text-form-model';
 
 @Component({
   selector: 'app-box-with-text',

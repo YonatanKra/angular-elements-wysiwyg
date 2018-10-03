@@ -29,15 +29,25 @@ export class AppComponent {
   }
 
   private getEventPosition(event) {
+    if (!event.currentTarget) {
+      return new Position(0, 0);
+    }
     const x = event.currentTarget.style.left + event.pageX;
     const y = event.currentTarget.style.top + event.pageY;
     return new Position(y, x);
   }
 
-  canvasClick(data) {
-    this.elementSpecs = new ElementSpecs();
+  private findElement(id) {
+    return this.elements.find(element => element.id === id);
+  }
 
-    this.elementSpecs.position = this.getEventPosition(event);
+  canvasClick(data) {
+    if (event.target.tagName === 'APP-CANVAS') {
+      this.elementSpecs = new ElementSpecs();
+      this.elementSpecs.position = this.getEventPosition(event);
+    } else {
+      this.elementSpecs = this.findElement(event.target.getAttribute('id'));
+    }
   }
 
   saveEvent(data) {
