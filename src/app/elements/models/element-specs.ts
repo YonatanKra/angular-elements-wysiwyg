@@ -7,7 +7,7 @@ export class ElementSpecs {
   public data: any;
   public events?: any;
 
-  constructor(data?: any) {
+  constructor(data?: any, id?: string) {
     if (!data) {
       return;
     }
@@ -19,6 +19,10 @@ export class ElementSpecs {
     }
     this.data = data.data;
     this.events = data.events;
+
+    if (id || data.id) {
+      this._id = id ? id : data.id;
+    }
   }
 
   get id() {
