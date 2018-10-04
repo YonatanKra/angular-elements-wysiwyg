@@ -32,6 +32,7 @@ export class BoxWithTextEditorComponent {
   }
 
   onDataSubmit(data) {
+    event.stopPropagation();
     this.submitEvent.emit(data);
   }
 
