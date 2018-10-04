@@ -41,6 +41,10 @@ export class AppComponent {
     return this.elements.find(element => element.id === id);
   }
 
+  private findElementIndex(id) {
+    return this.elements.findIndex(element => element.id === id);
+  }
+
   canvasClick(data) {
     if (event.target.tagName === 'APP-CANVAS') {
       this.elementSpecs = new ElementSpecs();
@@ -51,6 +55,11 @@ export class AppComponent {
   }
 
   saveEvent(data) {
-    this.elements.push(data);
+    const elementIndex = this.findElementIndex(data.id);
+    if (elementIndex > -1) {
+      this.elements[elementIndex] = new ElementSpecs(data, data.id);
+    } else {
+      this.elements.push(data);
+    }
   }
 }
