@@ -27,6 +27,9 @@ export class ElementWrapperComponent {
   }
 
   private addElementToDom(elementSpecs: ElementSpecs) {
+    if (!elementSpecs.type || elementSpecs.type.length == 0) {
+      return;
+    }
     const elementType = elementSpecs.type;
     const elementPosition = elementSpecs.position ? elementSpecs.position : {top: 0, left: 0};
     const elementData = elementSpecs.data;
@@ -35,7 +38,7 @@ export class ElementWrapperComponent {
     this._element['elementData'] = elementData;
     this._element.setAttribute('style',
       `top: ${elementPosition.top}px; left: ${elementPosition.left}px;`);
-    this._element.setAttribute('id', elementSpecs.id);
+    elementSpecs.id ? this._element.setAttribute('id', elementSpecs.id) : null;
 
     const events = elementSpecs.events;
     if (events) {

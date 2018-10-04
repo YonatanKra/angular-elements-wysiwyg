@@ -124,7 +124,7 @@ describe('EditElementComponent', () => {
         if (key === 'type') {
           return same && component.elementSpecs[key] === (emitPayload[key] + '-editor');
         }
-        return same && component.elementSpecs[key] === emitPayload[key];
+        return same && JSON.stringify(component.elementSpecs[key]) === JSON.stringify(emitPayload[key]);
       }, true);
 
       expect(component.saveEvent.emit).toHaveBeenCalled();

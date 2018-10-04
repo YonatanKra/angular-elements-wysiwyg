@@ -27,9 +27,9 @@ export class EditElementComponent implements OnInit {
       return;
     }
     this.toggleDisplay(true);
-    this._elementSpecs = Object.assign({}, data, {
-      type: data.type ? data.type + '-editor' : undefined
-    });
+    this._elementType = data.type;
+    this._elementSpecs = new ElementSpecs(data);
+    this._elementSpecs.type = data.type.length ? data.type + '-editor' : data.type;
 
     this._elementSpecs.events = {
       submitEvent: (event) => {
@@ -57,10 +57,10 @@ export class EditElementComponent implements OnInit {
     if (customElement === '') {
       return;
     }
-    this.elementSpecs = Object.assign({}, this.elementSpecs, {type: customElement});
+    this.elementSpecs = new ElementSpecs(Object.assign({}, this.elementSpecs, {type: customElement}), this.elementSpecs.id);
   }
 
   public save() {
-    this.saveEvent.emit(Object.assign({}, this.elementSpecs, {type: this._elementType}));
+    this.saveEvent.emit(new ElementSpecs(Object.assign({}, this.elementSpecs, {type: this._elementType}), this.elementSpecs.id));
   }
 }
