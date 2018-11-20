@@ -46,11 +46,12 @@ export class AppComponent {
   }
 
   canvasClick(data) {
-    if (event.target.tagName === 'APP-CANVAS') {
+    const targetElement = event.target as HTMLElement;
+    if (targetElement.tagName === 'APP-CANVAS') {
       this.elementSpecs = new ElementSpecs();
       this.elementSpecs.position = this.getEventPosition(event);
     } else {
-      this.elementSpecs = this.findElement(event.target.getAttribute('id'));
+      this.elementSpecs = this.findElement(targetElement.getAttribute('id'));
     }
   }
 
